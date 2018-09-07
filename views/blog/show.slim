@@ -1,0 +1,11 @@
+h1 = @post.title
+
+.card.mb-4
+  .card-body
+    p.card-text == @post.content.gsub(/\r\n|\r|\n/, "<br/>")
+    p.card-text: small.text-muted = "Last updated #{time_ago_in_words @post.updated_at} ago"
+
+a.btn.btn-outline-dark> role="button" href="/blog" Back
+form action="/blog/#{@post.id}" method="post" style="display: inline-block"
+  input type="hidden" name="_method" value="DELETE"
+  input type="submit" class="btn btn-outline-danger" value="Delete"

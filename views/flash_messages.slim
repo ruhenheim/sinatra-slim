@@ -1,0 +1,10 @@
+- flash.each do |type, message|
+  .alert.alert-dismissible.fade.show class="alert-#{type}" role="alert"
+    p = message
+    - if model&.errors&.any?
+      .mb-0.mx-4
+        ul
+          - model.errors.full_messages.each do |message|
+            li= message
+    button.close type="button" data-dismiss="alert" aria-label="閉じる"
+      span aria-hidden="true" =="&times;"

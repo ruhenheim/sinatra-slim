@@ -1,0 +1,10 @@
+ruby:
+  def current_page?(path)
+    'active' if request.path_info == path
+  end
+
+header.border.rounded.m-3.p-2
+  ul.nav.nav-pills
+    li.nav-item: a.nav-link(href="/" class=current_page?('/')) Dashboad
+    li.nav-item: a.nav-link(href="/blog" class=current_page?('/blog')) Blog
+    li.nav-item: a.nav-link(href="/blog/new" class=current_page?('/blog/new')) New blog
