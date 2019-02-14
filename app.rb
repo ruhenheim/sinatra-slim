@@ -5,9 +5,9 @@ require 'slim'
 
 require 'action_view'
 require 'action_view/helpers'
-include ActionView::Helpers::DateHelper
+include ActionView::Helpers::DateHelper ### to use `time_ago_in_words` helper-method
 
-set :database, {adapter: "sqlite3", database: "model.sqlite3"}
+set :database, {adapter: "sqlite3", database: "development.sqlite3"}
 # or set :database_file, "path/to/database.yml"
 
 class BlogApp < Sinatra::Base

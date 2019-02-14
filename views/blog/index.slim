@@ -8,14 +8,17 @@ h1 Post list
     .card-footer: small.text-muted = "Last updated #{time_ago_in_words post.updated_at} ago"
 
 scss:
-
-  .card.mb-4 a:hover {
-    color: #333333;
-    text-decoration: none;
-    opacity: 0.8;
+  * {
+    box-sizing: border-box;
   }
-  .card.mb-4 a {
+  a.card-body {
       color: #333333;
+
+      &:hover {
+        color: #333333;
+        text-decoration: none;
+        opacity: 0.8;
+      }
   }
   p.card-text.clamp {
     // 文の行数を2行に保ち、最後に... を追加するスタイル
