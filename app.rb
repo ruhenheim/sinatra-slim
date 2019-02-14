@@ -20,15 +20,15 @@ class BlogApp < Sinatra::Base
   end
   get '/blog' do
     @posts = Post.order(updated_at: :desc)
-    slim :'blog/index'
+    slim :"blog/index"
   end
   get '/blog/new' do
     @post = Post.new
-    slim :'blog/new'
+    slim :"blog/new"
   end
   get %r{/blog/(?<post_id>[0-9]+)} do
     @post = Post.find(params[:post_id])
-    slim :'blog/show'
+    slim :"blog/show"
   end
   post '/blog' do
     @post = Post.new(title: params[:title], content: params[:content])
@@ -36,7 +36,7 @@ class BlogApp < Sinatra::Base
       redirect to('/blog')
     else
       flash.now[:warning] = "投稿できませんでした."
-      slim :'blog/new'
+      slim :"blog/new"
     end
   end
   delete '/blog/:id' do

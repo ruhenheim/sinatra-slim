@@ -4,10 +4,11 @@ h1 Post list
   .card.mb-4
     a.card-body href="/blog/#{post.id}"
       h4.card-title = post.title
-      p.card-text == post.content.gsub(/\r\n|\r|\n/, "<br/>")
-      p.card-text: small.text-muted = "Last updated #{time_ago_in_words post.updated_at} ago"
+      p.card-text.clamp.ellipsis == post.content.gsub(/\r\n|\r|\n/, "<br/>")
+    .card-footer: small.text-muted = "Last updated #{time_ago_in_words post.updated_at} ago"
 
 scss:
+
   .card.mb-4 a:hover {
     color: #333333;
     text-decoration: none;
@@ -15,4 +16,35 @@ scss:
   }
   .card.mb-4 a {
       color: #333333;
+  }
+  p.card-text.clamp {
+    // 文の行数を2行に保ち、最後に... を追加するスタイル
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+    overflow: hidden;
+  }
+
+  .ellipsis {
+    position: relative;
+    height: 80px;
+    overflow: hidden;
+    line-height: 20px;
+  }
+
+  .ellipsis:before, .ellipsis:after {
+    position: absolute;
+    /*background: #fff;*/
+  }
+
+  .ellipsis:before {
+    content: "･･･";
+    bottom: 0;
+    right: 0;
+  }
+
+  .ellipsis:after {
+    content: "";
+    width: 100%;
+    height: 100%;
   }
